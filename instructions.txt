@@ -1,0 +1,19 @@
+// 1. On GitHub, create a new repository (or choose an existing one).
+// 2. Clone the repository to your local machine:
+//      git clone https://github.com/<your-username>/<your-repo>.git
+//      cd <your-repo>
+// 3. Inside the repo, create a folder for the Vite-React project:
+//      mkdir vite-react-app
+// 4. Copy all files and folders from your Vite-React project into the new folder:
+//      cp -R /path/to/your/project/* vite-react-app/
+// 5. Ensure you have a .gitignore in the root of the repo (if you don’t, create one) and include at least:
+//      /node_modules
+//      /dist
+//      .env
+// 6. Stage the new folder and .gitignore file:
+//      git add vite-react-app .gitignore
+// 7. Commit your changes with a descriptive message:
+//      git commit -m "Add Vite-React project in subfolder"
+// 8. Push your commit to GitHub:
+//      git push origin main
+// 9. Go to your repository on GitHub and verify that the “vite-react-app” folder contains all your project files.
