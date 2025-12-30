@@ -1,3 +1,4 @@
+// Modal displaying the shopping cart with items and checkout button
 import Modal from "./UI/Modal.jsx";
 import { useContext } from "react";
 import CartContext from "../store/CartContext.jsx";
@@ -6,16 +7,19 @@ import Button from "./UI/Button.jsx";
 import UserProgressContext from "../store/UserProgressContext.jsx";
 import CartItem from "./UI/CartItem.jsx";
 
+// Shows cart contents with total and navigation options
 export default function Cart() {
     const cartCtx = useContext(CartContext);
     const userProgressCtx = useContext(UserProgressContext);
 
     const cartTotal = cartCtx.items.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0);
 
+    // Closes the cart modal
     function handleCloseCart() {
         userProgressCtx.hideCart();
     }
 
+    // Navigates to the checkout page
     function handleGoToCheckout() {
         userProgressCtx.showCheckout();
     }

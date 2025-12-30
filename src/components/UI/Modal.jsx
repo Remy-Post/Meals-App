@@ -1,6 +1,8 @@
+// Modal dialog component using HTML dialog element and portal rendering
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
+// Displays content in a modal dialog
 export default function Modal({ children, open, onClose, className = '' }) {
     const dialog = useRef();
 

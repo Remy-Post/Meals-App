@@ -1,6 +1,8 @@
+// Custom hook for handling HTTP requests with loading and error states
 import { useState, useEffect, useCallback } from "react";
 
 
+// Sends an HTTP request and returns response data
 async function sendHttpRequest(url, config) {
     const response = await fetch(url, config);
 
@@ -13,16 +15,19 @@ async function sendHttpRequest(url, config) {
     return resData;
 }
 
+// Hook for managing HTTP requests with loading, error, and data states
 export default function useHttp(url, config, initialData) {
     const [data, setData] = useState(initialData);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState();
 
+    // Resets data to initial value
     function clearData() {
         setData(initialData);
     }
 
-  const sendRequest = useCallback(
+    // Sends an HTTP request with the provided data
+    const sendRequest = useCallback(
     async function sendRequest(data) {
     setIsLoading(true);
     try {

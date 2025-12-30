@@ -1,3 +1,4 @@
+// Checkout form for entering customer details and submitting orders
 import { use, useContext, useActionState } from "react";
 import Modal from "./UI/Modal.jsx";
 import CartContext from "../store/CartContext.jsx";
@@ -15,25 +16,30 @@ const requestConfig = {
     }
 }
 
+// Displays checkout form and handles order submission
 export default function Checkout() {
     const cartCtx = useContext(CartContext);
     const userProgressCtx = useContext(UserProgressContext);
 
 
+    // API endpoint for submitting orders
     const { data, error, sendRequest, clearData } = useHttp('http://localhost:3000/orders', requestConfig)
     const cartTotal = cartCtx.items.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0);
 
 
+    // Closes the checkout modal
     function handleClose() {
         userProgressCtx.hideCheckout();
     }
 
+    // Completes the order and clears cart data
     function handleFinish() {
         userProgressCtx.hideCheckout();
         cartCtx.clearCart();
         clearData();
     }
 
+    // Submits the order with customer data to the backend
     async function checkoutAction(prev, fd) {
         const customerData = Object.fromEntries(fd.entries());
 
