@@ -16,7 +16,7 @@ export default function MealItem({ meal }) {
     return (
         <li className="meal-item">
             <article>
-                // Backend URL for meal images
+                {/* Backend URL for meal images */}
                 <img src={`http://localhost:3000/${meal.image}`} alt={meal.name} />
                 <div>
                     <h3>{meal.name}</h3>

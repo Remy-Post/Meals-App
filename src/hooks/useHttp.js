@@ -26,8 +26,8 @@ export default function useHttp(url, config, initialData) {
         setData(initialData);
     }
 
-  // Sends an HTTP request with the provided data
-  const sendRequest = useCallback(
+    // Sends an HTTP request with the provided data
+    const sendRequest = useCallback(
     async function sendRequest(data) {
     setIsLoading(true);
     try {
