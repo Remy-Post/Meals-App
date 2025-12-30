@@ -1,3 +1,4 @@
+// Express server for managing meals and orders API
 import fs from 'node:fs/promises';
 
 import bodyParser from 'body-parser';
@@ -8,6 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// Enable CORS for all routes
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
@@ -15,14 +17,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// Retrieve the list of available meals
 app.get('/meals', async (req, res) => {
   const meals = await fs.readFile('./data/available-meals.json', 'utf8');
   res.json(JSON.parse(meals));
 });
 
+// Create a new order and save it to the orders file
 app.post('/orders', async (req, res) => {
   const orderData = req.body.order;
 
+  // Simulate processing delay
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
   if (orderData === null || orderData.items === null || orderData.items.length === 0) {
@@ -60,6 +65,7 @@ app.post('/orders', async (req, res) => {
   res.status(201).json({ message: 'Order created!' });
 });
 
+// Handle unknown routes
 app.use((req, res) => {
   if (req.method === 'OPTIONS') {
     return res.sendStatus(200);
@@ -68,4 +74,5 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
 });
 
+// Start the server on port 3000
 app.listen(3000);

@@ -1,3 +1,4 @@
+// Reusable button component with styling variants
 export default function Button({ children, textOnly, className, ...props }) {
     const cssClasses = textOnly ? `text-button ${className}` : `button ${className}`
 

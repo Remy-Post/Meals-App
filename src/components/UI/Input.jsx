@@ -1,3 +1,4 @@
+// Form input component with label
 export default function Input({ label, id, ...props }) {
     return (
         <p className="control">

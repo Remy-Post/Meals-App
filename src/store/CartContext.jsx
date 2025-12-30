@@ -1,3 +1,4 @@
+// Context for managing shopping cart state across the application
 import { createContext, useReducer } from 'react'
 
 const CartContext = createContext({
@@ -7,6 +8,7 @@ const CartContext = createContext({
     clearCart: () => { }
 })
 
+// Reducer function for managing cart state changes
 function cartReducer(state, action) {
     switch (action.type) {
         case 'ADD_ITEM':
@@ -56,6 +58,7 @@ function cartReducer(state, action) {
     }
 }
 
+// Provider component for cart context
 export function CartContextProvider({ children }) {
     const [cart, dispatchCartAction] = useReducer(cartReducer, { items: [] })
 
